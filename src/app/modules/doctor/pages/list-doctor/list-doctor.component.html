@@ -1,0 +1,98 @@
+<section class="container-fluid">
+    <div class="card mb-4 shadow">
+        <div class="card-body">
+            <div class="row d-flex flex-row justify-content-between flex-row-reverse align-items-center">
+
+                <div class="btn-group col-sm-6 col-lg-4">
+                    <button routerLink="/doctor/form/nuevo" class="btn btn-primary mb-sm-0 mb-2"><i class="fas fa-plus mr-1"></i>Agregar</button>
+                </div>
+
+                <div class="input-group col-sm-6 col-lg-4">
+                    <input #txtSearch type="text" (keyup)="enterSearch($event)" class="form-control bg-light border-0" placeholder="Buscar..." aria-label="Search" aria-describedby="search">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button" (click)="getSearch(txtSearch.value)">
+                            <i class="fas fa-search fa-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row ">
+
+        <div class="col-12 animated--fade-in" *ngIf="load">
+            <div class="alert alert-primary text-center ">
+                <div class="alert-heading ">Cargando</div>
+                <i class="fa fa-spin fa-sync-alt fa-2x "></i>
+                <p class="mb-0 ">Por favor espere</p>
+            </div>
+        </div>
+
+        <div 
+            class="col-12" 
+            *ngIf="!load">
+            <div 
+                class="row animated--fade-in" 
+                *ngIf="this.recordList.length> 0; else NoRecords">
+                <div 
+                    class="col-xl-6  col-lg-6 col-md-12 mb-4" 
+                    *ngFor="let record of this.recordList | paginate:page_size:page_number;">
+                    <div 
+                        class="card border-bottom-primary shadow h-100 py-2">
+                        <div class="card-body p-0">
+                            <div class="row">
+                                <div class="col-md-2 col-lg-3">
+                                    <img 
+                                        [src]="record.img | image:'doctor'" 
+                                        class="card-img cursor rounded-circle" 
+                                        alt="..." 
+                                        (click)="openDialogImage(record)">
+                                </div>
+                                <div class="col-md-10 col-lg-9">
+                                    <div class="col-md-12">
+                                        <div class="row d-flex justify-content-between mb-2 mt-1">
+                                            <div class="ml-4 text-xs font-weight-bold text-primary text-uppercase mt-2">{{ record.name }}</div>
+                                            <div class="p-0">
+                                                <a class="edit mr-4" routerLink="/doctor/details/{{record.id}}">
+                                                    <i class="fas fa-portrait"></i>
+                                                </a>
+                                                <a class="edit mr-4" href="#" (click)="edit(record)" data-toggle="modal" data-target="#modalDoctor">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                       
+                                        <div class="row">
+                                            <div class="row d-flex justify-content-around flex-wrap w-100">
+                                                <p class="h5 mb-0 font-weight-bold text-gray-800 mr-2 ml-2"><small class="text-muted "><i class="fas fa-id-card-alt mr-1"></i>{{ record.ci }}</small></p>
+                                                <p class="h5 mb-0 font-weight-bold text-gray-800 mr-2 ml-2"><small class="text-muted "><i class="fas fa-venus-mars mr-1"></i>{{ record.sex }}</small></p>
+                                            </div>
+                                            <div class="row d-flex justify-content-around flex-wrap w-100">
+                                                <p class="h5 mb-0 font-weight-bold text-gray-800 mr-2 ml-2"><small class="text-muted "><i class="fas fa-phone mr-1"></i>{{ record.phone }}</small></p>
+                                                <p class="h5 mb-0 font-weight-bold text-gray-800 mr-2 ml-2"><small class="text-muted "><i class="fas fa-stethoscope mr-1"></i>{{ record.specialty.name }}</small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-4 col-md-12">
+                    <mat-paginator class="shadow" [length]="this.recordList.length" [pageSize]="page_size" (page)="handlePage($event)" showFirstLastButtons color>
+                    </mat-paginator>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<ng-template #NoRecords>
+    <h3 class="text-primary">No se ha encontrado Ningún Registro...</h3>
+</ng-template>
+
+<app-report [title]="this.title" [headersList]="this.headersList" [propertyList]="this.propertyList" [recordList]="this.recordList"></app-report>

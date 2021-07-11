@@ -1,0 +1,91 @@
+<div class="card o-hidden border-0 shadow-lg my-5">
+    <div class="card-header">
+        <h5 class="card-title text-primary">Registro de usuario</h5>
+    </div>
+    <div class="card-body">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+            <form class="w-100" [formGroup]="fgv">
+                <div class="d-flex flex-wrap ">
+                    <div class="card col-md-12 col-lg shadow p-0 m-1">
+                        <div class="card-header">
+                            <h5 class="card-title">Datos de Usuario</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <label for="InputName">Nombre</label>
+                                    <input type="text" formControlName="firstName" [class.is-invalid]="firstName.touched && firstName.invalid" [class.is-valid]="firstName.touched && firstName.valid" class="form-control" name="firstName" placeholder="Nombre">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="InputLastName">Apellido</label>
+                                    <input type="text" formControlName="lastName" class="form-control" [class.is-invalid]="lastName.touched && lastName.invalid" [class.is-valid]="lastName.touched && lastName.valid" name="lastName" placeholder="Apellido">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="InputSex">Nombre de usuario</label>
+                                <input type="text" formControlName="userName" class="form-control" [class.is-invalid]="userName.touched && userName.invalid" [class.is-valid]="userName.touched && userName.valid" name="userName" placeholder="Ingre su nombre de usuario.">
+                            </div>
+                            <div class="form-group">
+                                <label for="InputSex">Clave</label>
+                                <input type="password" class="form-control" [class.is-invalid]="password.touched && password.invalid" [class.is-valid]="password.touched && password.valid" formControlName="password" name="password" placeholder="Password">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="InputSex">Repita la clave</label>
+                                <input type="password" class="form-control" [class.is-invalid]="(repeatPassword.touched && repeatPassword.invalid) || checkEqual()" [class.is-valid]="(repeatPassword.touched && repeatPassword.valid)" formControlName="repeatPassword" name="repeatPassword"
+                                    placeholder="Confirmar clave">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 card col-lg shadow p-0 m-1">
+                        <div class="card-header">
+                            <h5 class="card-title">Datos de Seguridad</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="InputGs">Pregunta de seguridad</label>
+                                <select class="form-control" [class.is-invalid]="(question1.touched && question1.invalid) || checkNotEqual()" [class.is-valid]="question1.touched && question1.valid" formControlName="question1">
+                            <option value=1>¿Cuál es tu mascota favorita?</option>
+                            <option value=2>¿Nombre de tu mejor amigo?</option>
+                            <option value=3>¿Equipo de futbol favorito?</option>
+                            <option value=4>¿Tipo de música que más te gusta?</option>
+                            <option value=5>¿Nombre de tu madre o padre?</option>
+                        </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="InputName">Respuesta</label>
+                                <input type="text" class="form-control" [class.is-invalid]="reply1.touched && reply1.invalid" [class.is-valid]="reply1.touched && reply1.valid" formControlName="reply1" placeholder="Escribe la respuesta aquí.">
+                            </div>
+                            <div class="form-group">
+                                <label for="InputGs">Pregunta de seguridad</label>
+                                <select class="form-control" [class.is-invalid]="(question2.touched && question2.invalid) || checkNotEqual()" [class.is-valid]="question2.touched && question2.valid" formControlName="question2">
+                          <option value=1>¿Cuál es tu mascota favorita?</option>
+                          <option value=2>¿Nombre de tu mejor amigo?</option>
+                          <option value=3>¿Equipo de futbol favorito?</option>
+                          <option value=4>¿Tipo de música que más te gusta?</option>
+                          <option value=5>¿Nombre de tu madre o padre?</option>
+                        </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="InputName">Respuesta</label>
+                                <input type="text" class="form-control" [class.is-invalid]="reply2.touched && reply2.invalid" [class.is-valid]="reply2.touched && reply2.valid" formControlName="reply2" placeholder="Escribe la respuesta aquí. ">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </form>
+        </div>
+    </div>
+    <div class="card-footer d-flex flex-row aling-items-center justify-content-end">
+        <button type="button" class="btn btn-secondary" routerLink='/login'><i class="fas fa-arrow-left mr-1"></i>Volver</button>
+        <button type="button" [disabled]="fgv.invalid" (click)="onSubmit()" class="btn btn-primary ml-2">
+                    Registrar
+        </button>
+    </div>
+</div>

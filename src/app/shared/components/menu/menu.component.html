@@ -1,0 +1,25 @@
+<section *ngFor="let listItem of listItems">
+
+    <!-- Heading -->
+    <div *ngIf=listItem.isHeading class="sidebar-heading">
+        {{ listItem.heading }}
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item m-0">
+        <a [class]="'nav-link '+listItem.class+'d'" [routerLink]="listItem.link != '' ? [listItem.link] : []" [attr.data-toggle]="listItem.class" [attr.data-target]="'#'+listItem.class+listItem.title" aria-expanded="true" [attr.aria-controls]="listItem.class+listItem.title">
+            <i [class]="listItem.icon+' lg-icon'"></i>
+            <span>{{ listItem.title }}</span>
+        </a>
+        <div *ngIf="listItem.class === 'collapse'" [id]="listItem.class+listItem.title" class="collapse" [attr.aria-labelledby]="'heading'+listItem.title" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <section *ngFor="let children of listItem.childrens">
+                    <a class="collapse-item" [routerLink]="[children.link]" routerLinkActive="active">{{ children.title }}</a>
+                </section>
+            </div>
+        </div>
+    </li>
+
+    <!-- Divider -->
+    <hr *ngIf=listItem.isDivider class="sidebar-divider">
+</section>

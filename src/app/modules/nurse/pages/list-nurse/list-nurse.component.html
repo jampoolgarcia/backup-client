@@ -1,0 +1,87 @@
+<section class="container-fluid">
+    <div class="row d-flex flex-row justify-content-between flex-row-reverse">
+
+        <div class="btn-group col-sm-6 col-lg-4 mb-4">
+            <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modalNurse"><i class="fas fa-plus mr-1"></i>Agregar</button>
+            <button class="btn btn-outline-primary" (click)="downloadPdf()" type="button">Descargar<i class="fas fa-download ml-1"></i></button>
+        </div>
+
+        <div class="input-group col-sm-6 col-lg-4 mb-4">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <i class="fas fa-search fa-sm "></i>
+                </div>
+            </div>
+            <input type="search" name="filterPost" class="form-control" placeholder="Buscar..." aria-label="Search" aria-describedby="search">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 animated--fade-in" *ngIf="load">
+            <div class="alert alert-primary text-center">
+                <div class="alert-heading">Cargando</div>
+                <i class="fa fa-spin fa-sync-alt fa-2x"></i>
+                <p class="mb-0">Por favor espere</p>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="!load">
+        <div class="row animated--fade-in" *ngIf="this.recordsList.length > 0; else NoRecords">
+
+            <div class="col-xl-6 col-lg-6 col-md-12 mb-4">
+                <div class="card border-bottom-primary shadow h-100 py-2" *ngFor="let record of this.recordsList | paginate:page_size:page_number;">
+                    <div class="row no-gutters">
+                        <div class="col-md-2">
+                            <img [src]="record.img | image:'nurse'" class="card-img" alt="...">
+                        </div>
+                        <div class="col-md-10 ">
+                            <a class="edit float-right mr-4 mt-3" routerLink="/nurse/details/{{record.id}}">
+                                <i class="fas fa-file-invoice"></i>
+                            </a>
+                            <a class="edit float-right mr-4 mt-3" href="#" (click)="edit(record)" data-toggle="modal" data-target="#modalNurse">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <div class="card-body">
+                                <div class="col-md-12">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">{{ record.name }}</div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p class="h5 mb-0 font-weight-bold text-gray-800"><small class="text-muted ">{{ record.ci }}</small></p>
+                                        </div>
+                                        <div class="col-md-6 ">
+                                            <p class="h5 mb-0 font-weight-bold text-gray-800"><small class="text-muted ">{{ record.sex }}</small></p>
+                                        </div>
+
+                                    </div>
+                                    <div class="row ">
+                                        <div class="col-md-6 ">
+                                            <p class="h5 mb-0 font-weight-bold text-gray-800"><small class="text-muted ">{{ record.phone }}</small></p>
+                                        </div>
+                                        <div class="col-md-6 ">
+                                            <p class="h5 mb-0 font-weight-bold text-gray-800"><small class="text-muted ">{{ record.direction }}</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4 mb-4 col-md-12">
+                <mat-paginator class="shadow" [length]="this.recordsList.length" [pageSize]="page_size" (page)="handlePage($event)" showFirstLastButtons color>
+                </mat-paginator>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<ng-template #NoRecords>
+    <div class="alert alert-primary text-center animated--fade-in">
+        <h3>No se ha encontrado ningún registro...</h3>
+    </div>
+
+</ng-template>

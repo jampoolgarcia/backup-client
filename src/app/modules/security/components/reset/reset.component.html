@@ -1,0 +1,84 @@
+<div class="card o-hidden border-0 shadow-lg my-5">
+    <div class="card-header">
+        <h5 class="card-title text-primary">Restablecer Clave</h5>
+    </div>
+    <div class="card-body">
+        <!-- Nested Row within Card Body -->
+        <form [formGroup]="fgv">
+            <div class="d-flex flex-wrap">
+
+                <div class="col-lg col-md-12 m-1 p-0">
+                    <div class="card shadow p-0 mb-1">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="userName">Nombre de usuario</label>
+                                <input type="text" formControlName="userName" class="form-control" [class.is-invalid]="fgv.get('userName').touched && fgv.get('userName').invalid" [class.is-valid]="fgv.get('userName').touched && fgv.get('userName').valid" name="userName" placeholder="Ingrese su nombre de usuario.">
+                            </div>
+                        </div>
+                        <div class="card-footer d-flex flex-row aling-items-center justify-content-end">
+                            <button class="btn btn-primary" [disabled]="fgv.get('userName').invalid" (click)="getRecord(fgv.get('userName').value)">Enviar</button>
+                        </div>
+                    </div>
+
+                    <div class="card shadow p-0">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="password">Nueva Clave</label>
+                                <input type="password" [readonly]="isUser" class="form-control" [class.is-invalid]="fgv.get( 'password').touched && fgv.get( 'password').invalid " [class.is-valid]="fgv.get( 'password').touched && fgv.get( 'password').valid
+                                    " formControlName="password" name="password" placeholder="Clave">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="repeatPassword ">Repita la nueva clave</label>
+                                <input type="password" [readonly]="isUser" class="form-control" [class.is-invalid]="(fgv.get( 'repeatPassword').touched && fgv.get( 'repeatPassword').invalid) || checkEqual()" [class.is-valid]="(fgv.get( 'repeatPassword').touched && fgv.get(
+                                    'repeatPassword').valid)" formControlName="repeatPassword" name="repeatPassword" placeholder="Confirmar clave ">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg  col-md-12 card shadow m-1 ">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="InputGs">Pregunta de seguridad</label>
+                            <select class="form-control" [class.is-invalid]="(fgv.get('question1').touched && fgv.get('question1').invalid) || checkNotEqual()" [class.is-valid]="fgv.get('question1').touched && fgv.get('question1').valid" formControlName="question1">
+                                                <option value=1>¿Cuál es tu mascota favorita?</option>
+                                                <option value=2>¿Nombre de tu mejor amigo?</option>
+                                                <option value=3>¿Equipo de futbol favorito?</option>
+                                                <option value=4>¿Tipo de música que más te gusta?</option>
+                                                <option value=5>¿Nombre de tu madre o padre?</option>
+                                            </select>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="InputName">Respuesta</label>
+                            <input type="text" class="form-control" [class.is-invalid]="fgv.get('reply1').touched && fgv.get('reply1').invalid" [class.is-valid]="fgv.get('reply1').touched && fgv.get('reply1').valid" formControlName="reply1" placeholder="Escribe la respuesta aquí."
+                                [readonly]="isUser">
+                        </div>
+                        <div class="form-group">
+                            <label for="InputGs">Pregunta de seguridad</label>
+                            <select class="form-control" [class.is-invalid]="(fgv.get('question2').touched && fgv.get('question2').invalid) || checkNotEqual()" [class.is-valid]="fgv.get('question2').touched && fgv.get('question2').valid" formControlName="question2">
+                                                <option value=1>¿Cuál es tu mascota favorita?</option>
+                                                <option value=2>¿Nombre de tu mejor amigo?</option>
+                                                <option value=3>¿Equipo de futbol favorito?</option>
+                                                <option value=4>¿Tipo de música que más te gusta?</option>
+                                                <option value=5>¿Nombre de tu madre o padre?</option>
+                                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="InputName">Respuesta</label>
+                            <input type="text" [readonly]="isUser" class="form-control" [class.is-invalid]="fgv.get( 'reply2').touched && fgv.get( 'reply2').invalid" [class.is-valid]="fgv.get( 'reply2').touched && fgv.get( 'reply2').valid" formControlName="reply2" placeholder="Escribe la respuesta aquí.">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <div class="card-footer d-flex flex-row aling-items-center justify-content-end">
+        <button type="button" (click)="this.buildingForm()" class="btn btn-secondary" routerLink='/login'><i class="fas fa-arrow-left mr-1"></i>Volver</button>
+        <button type="button" [disabled]="fgv.invalid" (click)="onSubmit()" class="btn btn-primary ml-2">
+                    Registrar
+        </button>
+    </div>
+</div>

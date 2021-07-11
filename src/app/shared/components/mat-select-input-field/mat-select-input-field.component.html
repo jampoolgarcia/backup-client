@@ -1,0 +1,17 @@
+<mat-select  
+class="select">
+    <mat-option>--NONE--</mat-option>
+    <mat-option *ngFor="let item of selectList" [value]="item">
+        {{item}}
+    </mat-option>
+</mat-select>
+<mat-divider [vertical]="true" class="divider"></mat-divider>
+<input 
+    [ngStyle]="{ opacity : disabled ? 0.5 : 1}"
+    [disabled]="disabled"
+    matInput 
+    [placeholder]="placeholder" 
+    type="text" 
+    name="input-field" 
+    class="input">
+

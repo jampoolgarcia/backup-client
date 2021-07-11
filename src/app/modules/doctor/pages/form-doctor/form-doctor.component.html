@@ -1,0 +1,354 @@
+<div class="d-flex justify-content-center">
+    <mat-card class="w-100 w-sm-50">
+        <mat-card-header>
+            <mat-card-title>Registro</mat-card-title>
+            <mat-card-subtitle>Ingrese los datos para Registrar...</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+    
+        <mat-form-field>
+            <mat-label>C.I</mat-label>
+            <app-mat-select-input-field [value]="''" [disabled]='false' [required]='true' placeholder="numero de cedula..." [selectList]="['V', 'E', 'P', 'R']" #value></app-mat-select-input-field>
+        </mat-form-field>
+
+        <form-field-custom-control-example #phone></form-field-custom-control-example>
+    
+        <form-field-custom-control-example #phone></form-field-custom-control-example>
+
+        <form-field-custom-control-example #phone></form-field-custom-control-example>
+    
+            <!-- <form>
+                <mat-form-field>
+                    <mat-label>Nombre</mat-label>
+                    <input type="text" matInput>
+                </mat-form-field>
+    
+                <mat-form-field>
+                    <mat-label>C.I</mat-label>
+                    <mat-select>
+                        <mat-option>
+                            -- None --
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+                <mat-form-field>
+                    <mat-label>Numero de C.I</mat-label>
+                    <input type="text" matInput>
+                </mat-form-field>
+    
+                <form-field-custom-control-example #phone></form-field-custom-control-example>
+    
+                <!-- <mat-form-field appearance="fill">
+                    <mat-label>Phone number</mat-label>
+                    <example-tel-input required></example-tel-input>
+                    <mat-icon matSuffix>phone</mat-icon>
+                    <mat-hint>Include area code</mat-hint>
+                  </mat-form-field> -->
+    
+                <!--
+                <mat-form-field>
+                    <mat-label>Telephone</mat-label>
+                    <input type="tel" matInput placeholder="555-555-1234">
+                  </mat-form-field>
+    
+                <mat-form-field>
+                    <mat-label>Número de teléfono</mat-label>
+                    <input type="text" matInput>
+                </mat-form-field>
+    
+                <mat-form-field>
+                    <mat-label>Sexo</mat-label>
+                    <mat-select>
+                        <mat-option>
+                            -- None --
+                        </mat-option>
+                        <mat-option value="Masculino">
+                            Masculino
+                        </mat-option>
+                        <mat-option value="Femenino">
+                            Femenino
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </form> -->
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-raised-button><mat-icon>arrow_back</mat-icon>Volver</button>
+            <button mat-raised-button color="primary" (click)="test(value)"><mat-icon>save</mat-icon>Gardar</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+
+
+
+<!-- <div class="row">
+    <div class="col-md-12 col-lg-6">
+        <div class="card mb-3">
+            <h5 class="card-header text-primary">Doctor</h5>
+            <div class="card-body">
+                        <form class="ml-4 mr-4 mt-3" [formGroup]="fgValidators">
+        
+                            <input type="hidden" class="form-control" formControlName="id">
+            
+                            <div class="form-row">
+                                <div class="form-group col-sm-12">
+                                    <label for="InputName">Nombre</label>
+                                    <input type="text" class="form-control" [class.is-invalid]="name.touched && name.invalid" [class.is-valid]="name.touched && name.valid" formControlName="name" placeholder="Nombre completo">
+                                </div>
+                            </div>
+            
+            
+                            <div class="form-group">
+                                <label for="InputCi">C.I</label>
+                                <div class="row">
+                                    <div class="col-sm-4 mb-2">
+                                        <select class="form-control" [class.is-invalid]="tci.touched && tci.invalid" [class.is-valid]="tci.touched && tci.valid" formControlName="tci">
+                                                <option value="V">V</option>
+                                                <option value="E">E</option>
+                                                <option value="P">P</option>
+                                        </select>
+                                    </div>
+            
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" [class.is-invalid]="ci.touched && ci.invalid" [class.is-valid]="ci.touched && ci.valid" formControlName="ci" placeholder="Ingresa el número.">
+                                    </div>
+                                </div>
+                            </div>
+            
+            
+                            <div class="form-group mb-4">
+                                <label for="InputTelf">Teléfono</label>
+                                <div class="row">
+                                    <div class="col-sm-5 mb-2">
+                                        <select class="form-control" [class.is-invalid]="ctelf.touched && ctelf.invalid" [class.is-valid]="ctelf.touched && ctelf.valid" formControlName="ctelf">
+                                                <option value="0416">0416</option>
+                                                <option value="0426">0426</option>
+                                                <option value="0414">0414</option>
+                                                <option value="0424">0424</option>
+                                                <option value="0412">0412</option>
+                                                <option value="0277">0277</option>
+                                            </select>
+                                    </div>
+            
+                                    <div class="col-sm-7">
+                                        <input type="tel" class="form-control" [class.is-invalid]="telf.touched && telf.invalid" [class.is-valid]="telf.touched && telf.valid" formControlName="telf" placeholder="Ingresa el número.">
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <div class="form-row">
+                                <div class="form-group col-md-6 mb-4">
+                                    <label for="InputSex">Sexo</label>
+                                    <select class="form-control" [class.is-invalid]="sex.touched && sex.invalid" [class.is-valid]="sex.touched && sex.valid" formControlName="sex">
+                                            <option value="Hombre">Hombre</option>
+                                            <option value="Mujer">Mujer</option>
+                                        </select>
+                                </div>
+                                <div class="form-group col-md-6 mb-4">
+                                    <label for="specialty">Especialidad</label>
+                                    <div class="input-group">
+                                        <select class="form-control" [class.is-invalid]="specialty.touched && specialty.invalid" [class.is-valid]="specialty.touched && specialty.valid" formControlName="specialty">
+                                            <option *ngFor="let specialty of recordList" value="{{specialty.id}}">{{ specialty.name }}</option>
+                                            </select>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#modalSpecialty"><i class="fas fa-plus"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <div class="form-row">
+                                <div class="form-group col-md-12 mb-4">
+                                    <label for="InputFech">Fecha de Nacimiento</label>
+                                    <input type="date" class="form-control" formControlName="dateBirth" value="2011-08-19" [class.is-invalid]="dateBirth.touched && dateBirth.invalid" [class.is-valid]="dateBirth.touched && dateBirth.valid">
+                                </div>
+                            </div>
+            
+                            <div class="form-row">
+                                <div class="form-group col-md-12  mb-4">
+                                    <label for="InputDirection">Dirección</label>
+                                    <input type="text" class="form-control" [class.is-invalid]="direction.touched && direction.invalid" [class.is-valid]="direction.touched && direction.valid" formControlName="direction" placeholder="Dirección">
+                                </div>
+                            </div>
+            
+                        </form>
+            </div>
+            <div class="card-footer d-flex flex-row-reverse">
+                <button type="submit" class="btn btn-primary ml-3" [disabled]="fgValidators.invalid" (click)="onSubmit()">
+                    Registrar
+                </button>
+                <a class="btn btn-secondary" (click)="this.buildingForm(null)" data-dismiss="modal"><i class="fas fa-arrow-left mr-1"></i>Volver</a>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="false" class="col-md-12 col-lg-6">
+        <div class="card">
+            <h5 class="card-header">Avatar</h5>
+            <div class="card-body d-flex justify-content-center">
+                <img 
+                    *ngIf="!this.imgTemp"
+                    [src]="this.data.img | image:'doctor'" 
+                    class="avatar shadow" 
+                    [alt]="this.data.img">
+                <img 
+                    *ngIf="this.imgTemp"
+                    [src]="this.imgTemp" 
+                    class="avatar shadow" 
+                    [alt]="this.data.img">
+                <div class="d-flex justify-content-center mb-3">
+                    <input type="file" class="overflow-hidden" accept="image/png, image/jpeg, image/jpg, image/svg" (change)="updateImg($event.target.files[0])">
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary btn-block" [disabled]="!newImg" (click)="onUploadImg()">
+                    Actializar Foto
+                </button>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+<!-- <div class="form-row justify-content-center">
+    <div class="form-group">
+        <img [src]="URL_BASE+fgValidators.get('img').value" class="card-img cursor" alt="...">
+    </div>
+    <div class="custom-file mb-3">
+        <input type="file" class="custom-file-input" aria-describedby="btnChangeImg" name="img" lang="en" (change)="saveImg($event)">
+        <label class="custom-file-label" for="customFileLang">
+        Cambiar imagen
+        </label>
+    </div>
+</div> -->
+
+
+<!-- <div class="modal fade" id="modalDoctor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content ">
+
+            <div class="modal-header">
+                <h5 class="modal-title text-center text-primary" id="exampleModalLabel">Doctor</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+
+            <div class="modal-body">
+                <div class="container">
+                    <form class="ml-4 mr-4 mt-3" [formGroup]="fgValidators">
+
+                        <input type="hidden" class="form-control" formControlName="id">
+
+                        <div class="form-row justify-content-center">
+                            <div class="form-group">
+                                <img [src]="URL_BASE+fgValidators.get('img').value" class="card-img cursor" alt="...">
+                            </div>
+                            <div class="custom-file mb-3">
+                                <input type="file" class="custom-file-input" aria-describedby="btnChangeImg" name="img" lang="en" (change)="saveImg($event)">
+                                <label class="custom-file-label" for="customFileLang">
+                                Cambiar imagen
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-sm-12">
+                                <label for="InputName">Nombre</label>
+                                <input type="text" class="form-control" [class.is-invalid]="name.touched && name.invalid" [class.is-valid]="name.touched && name.valid" formControlName="name" placeholder="Nombre completo">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="InputCi">C.I</label>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <select class="form-control" [class.is-invalid]="tci.touched && tci.invalid" [class.is-valid]="tci.touched && tci.valid" formControlName="tci">
+                                            <option value="V">V</option>
+                                            <option value="E">E</option>
+                                            <option value="P">P</option>
+                                        </select>
+                                </div>
+
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" [class.is-invalid]="ci.touched && ci.invalid" [class.is-valid]="ci.touched && ci.valid" formControlName="ci" placeholder="Ingresa el número.">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group mb-4">
+                            <label for="InputTelf">Teléfono</label>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <select class="form-control" [class.is-invalid]="ctelf.touched && ctelf.invalid" [class.is-valid]="ctelf.touched && ctelf.valid" formControlName="ctelf">
+                                            <option value="0416">0416</option>
+                                            <option value="0426">0426</option>
+                                            <option value="0414">0414</option>
+                                            <option value="0424">0424</option>
+                                            <option value="0412">0412</option>
+                                            <option value="0277">0277</option>
+                                        </select>
+                                </div>
+
+                                <div class="col-sm-7">
+                                    <input type="tel" class="form-control" [class.is-invalid]="telf.touched && telf.invalid" [class.is-valid]="telf.touched && telf.valid" formControlName="telf" placeholder="Ingresa el número.">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6 mb-4">
+                                <label for="InputSex">Sexo</label>
+                                <select class="form-control" [class.is-invalid]="sex.touched && sex.invalid" [class.is-valid]="sex.touched && sex.valid" formControlName="sex">
+                                        <option value="Hombre">Hombre</option>
+                                        <option value="Mujer">Mujer</option>
+                                    </select>
+                            </div>
+                            <div class="form-group col-md-6 mb-4">
+                                <label for="specialty">Especialidad</label>
+                                <div class="input-group">
+                                    <select class="form-control" [class.is-invalid]="specialty.touched && specialty.invalid" [class.is-valid]="specialty.touched && specialty.valid" formControlName="specialty">
+                                        <option *ngFor="let specialty of recordList" value="{{specialty.id}}">{{ specialty.name }}</option>
+                                        </select>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#modalSpecialty"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-12 mb-4">
+                                <label for="InputFech">Fecha de Nacimiento</label>
+                                <input type="date" class="form-control" formControlName="dateBirth" value="2011-08-19" [class.is-invalid]="dateBirth.touched && dateBirth.invalid" [class.is-valid]="dateBirth.touched && dateBirth.valid">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-12  mb-4">
+                                <label for="InputDirection">Dirección</label>
+                                <input type="text" class="form-control" [class.is-invalid]="direction.touched && direction.invalid" [class.is-valid]="direction.touched && direction.valid" formControlName="direction" placeholder="Dirección">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+
+            <div class="modal-footer">
+                
+            </div>
+
+        </div>
+
+    </div>
+
+</div> -->
+
+<app-specialty [recordList]="recordList" (updateList)="fillRecords()"></app-specialty>

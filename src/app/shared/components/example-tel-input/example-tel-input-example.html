@@ -1,0 +1,19 @@
+<div role="group" class="example-tel-input-container"
+     [formGroup]="parts"
+     [attr.aria-labelledby]="_formField?.getLabelId()">
+  <input class="example-tel-input-element"
+         formControlName="code" size="4"
+         maxLength="4"
+         aria-label="Area code"
+         (input)="_handleInput(parts.controls.code, number)"
+         #code>
+  <span class="example-tel-input-spacer">&ndash;</span>
+  <input class="example-tel-input-element"
+         formControlName="number"
+         maxLength="10"
+         size="10"
+         aria-label="Phone number"
+         (input)="_handleInput(parts.controls.number)"
+         (keyup.backspace)="autoFocusPrev(parts.controls.number, code)"
+         #number>
+</div>

@@ -1,0 +1,39 @@
+<div class="modal fade bd-example-modal-sm" id="modalCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered  modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h5 class="modal-title text-center mt-3 text-primary" id="exampleModalLabel">Categoria</h5>
+                <div class="container">
+
+                    <form class="ml-4 mr-4 mt-3" [formGroup]="fgValidators">
+                        <input type="hidden" formControlName="id" class="form-control">
+                        <div class="form-row">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" [class.is-invalid]="name.touched && name.invalid" [class.is-valid]="name.touched && name.valid" formControlName="name" placeholder="Nombre" aria-label="name" aria-describedby="btnName">
+                                <div class="input-group-append">
+                                    <button [disabled]="fgValidators.invalid" class="btn btn-primary" (click)="onSubmit()" type="submit">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="list-unstyled">
+                            <li *ngFor="let record of recordList | paginate:page_size:page_number;">
+                                {{ record.name }}
+                                <a class="float-right" (click)="buildingForm(record)"><i class="fas fa-edit"></i></a>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+
+            <mat-paginator [length]="this.recordList.length" [pageSize]="page_size" (page)="handlePage($event)">
+            </mat-paginator>
+
+
+            <div class="form-group text-center mb-4">
+                <a href="#" class="small" data-dismiss="modal" (click)="buildingForm(null)">Volver</a>
+            </div>
+        </div>
+    </div>
+</div>

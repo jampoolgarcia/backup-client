@@ -1,0 +1,71 @@
+{
+    "fields": {
+        "id": true,
+        "name": true,
+        "ci": true,
+        "phone": true,
+        "sex": true,
+        "dateBirth": true,
+        "direction": true,
+        "balance": true,
+        "img": true,
+        "specialtyId": true
+    },
+    "include": [{
+            "relation": "specialty"
+        },
+        {
+            "relation": "payments",
+            "scope": {
+                "order": "ASC",
+                "include": [{
+                    "relation": "paymentTypes"
+                }]
+            }
+        },
+        {
+            "relation": "consultation"
+        }
+    ]
+}
+
+/**
+{
+    "offset": 0,
+    "limit": 100,
+    "skip": 0,
+    "order": "string",
+    "fields": {
+        "id": true,
+        "name": true,
+        "ci": true,
+        "phone": true,
+        "sex": true,
+        "dateBirth": true,
+        "direction": true,
+        "balance": true,
+        "img": true,
+        "specialtyId": true
+    },
+    "include": [{
+            "relation": "string",
+            "scope": {
+                "offset": 0,
+                "limit": 100,
+                "skip": 0,
+                "order": "string",
+                "where": {
+                    "additionalProp1": {}
+                },
+                "fields": {
+                    "additionalProp1": {}
+                },
+                "include": [{
+                    "additionalProp1": {}
+                }]
+            }
+        },
+        "string"
+    ]
+}
+*/

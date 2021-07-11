@@ -1,0 +1,87 @@
+<section class="row">
+    <div class="col-xl-12 col-lg-12">
+
+        <div class="card shadow mb-4">
+            <!-- Card Body -->
+            <div class="card-body">
+
+                <div class="row d-flex flex-row justify-content-end">
+
+                    <div class="input-group py-3 col-sm-6 col-lg-4">
+                        <input #txtSearch type="text" (keyup)="enterSearch($event)" class="form-control bg-light border-0 h-100" placeholder="Buscar..." aria-label="Search" aria-describedby="search">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary h-100" type="button" (click)="getSearch(txtSearch.value)">
+                                <i class="fas fa-search fa-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- DataTables -->
+                <div class="row">
+
+                    <div class="col-12 animated--fade-in" *ngIf="load">
+                        <div class="alert alert-primary text-center">
+                            <div class="alert-heading">Cargando</div>
+                            <i class="fa fa-spin fa-sync-alt fa-2x"></i>
+                            <p class="mb-0">Por favor espere</p>
+                        </div>
+                    </div>
+
+                    <div class="col-12" *ngIf="!load">
+                        <div class="col animated--fade-in" *ngIf="this.recordList.length > 0; else NoRecords">
+
+                            <table class="table table-responsive-sm mb-4">
+                                <thead>
+                                    <tr>
+                                        <th class="wp-50" scope="col">N°</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Usuario</th>
+                                        <th class="wp-150" scope="col">Rol</th>
+                                        <th class="wp-75" scope="col">Estado</th>
+                                        <th class="wp-150" scope="col">Operaciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let record of recordList | paginate:page_size:page_number; index as i ">
+                                        <td scope="row">{{ getNumber(i+1) }}</td>
+                                        <td>{{ record.firstName }} {{ record.lastName }}</td>
+                                        <td>{{ record.userName }}</td>
+                                        <td>{{ getRole(record) }}</td>
+                                        <td>
+                                            <span *ngIf='record.isActive' class="badge bg-primary text-white ">Activo</span>
+                                            <span *ngIf='!record.isActive' class="badge bg-danger text-white ">Inactivo</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="edit cursor" data-toggle="modal" (click)="editForm(record)" data-target="#modalEditUser">
+                                                <i class="fas fa-edit "></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="dropdown-divider"></div>
+
+                            <div>
+                                <mat-paginator [length]="this.recordList.length" [pageSize]="page_size" (page)="handlePage($event)" showFirstLastButtons color [hidePageSize]="hidden">
+                                </mat-paginator>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<ng-template #NoRecords>
+    <div class="alert alert-primary text-center animated--fade-in">
+        <h3>No se ha encontrado ningún registro...</h3>
+    </div>
+
+</ng-template>
+
+<app-edit (updateList)="fillRecords()"></app-edit>

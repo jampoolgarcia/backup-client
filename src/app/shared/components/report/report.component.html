@@ -1,0 +1,57 @@
+<div class="modal fade" id="modalReport" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <h5 class="modal-title text-center text-primary" id="exampleModalLabel">{{ title }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="container-fluid mb-5" id="content-pdf">
+
+                    <header class="mb-4 mt-4 d-flex flex-row justify-content-between">
+                        <div class="logo">
+                            <img class="card-img" src="/assets/images/logo.png">
+                        </div>
+                        <div class="company">
+                            <h2 class="name text-right text-primary">Centro de salud BayVill</h2>
+                            <div class="text-right">455 Foggy Heights, AZ 85004, US</div>
+                            <div class="text-right">(602) 519-0450</div>
+                            <div class="text-right"><a href="mailto:company@example.com">company@example.com</a></div>
+                        </div>
+                    </header>
+                    <hr>
+                    <h2 class="text-center text-primary">{{ title }}</h2>
+                    <hr>
+                    <table class="table table-striped table-responsive-sm">
+                        <thead>
+                            <tr>
+                                <th scope="col" *ngFor="let header of this.headersList">{{ header }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let record of this.recordList; index as i ">
+                                <td scope="row">{{ i+1 }}</td>
+                                <td *ngFor="let property of this.propertyList">{{ checkProperty(record[property]) }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal"><i class="fas fa-arrow-left mr-1"></i>Volver</button>
+                <button class="btn btn-primary" (click)="downloadPdf()" type="button">Descargar<i class="fas fa-download ml-1"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- <div class="row d-flex flex-row-reverse">
+    <div class="btn-group col-sm-6 col-lg-4 mb-4">
+        </div>
+</div> -->

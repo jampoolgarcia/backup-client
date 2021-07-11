@@ -1,0 +1,14 @@
+<section>
+    <div class="container bg-light">
+        <div class="row py-4">
+            <div class="col-lg-4 col-md-6 col-xs-12" *ngFor="let card of cards">
+                <div class="{{card.class}}" [routerLink]="[card.link]">
+                    <div class="card-body">
+                        <h3>{{card.title}}</h3>
+                        <i [class]="card.icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

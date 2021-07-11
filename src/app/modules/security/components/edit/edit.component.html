@@ -1,0 +1,36 @@
+<div class="modal fade bd-example-modal" id="modalEditUser" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 *ngIf="record" class="modal-title  text-primary" id="exampleModalLabel">User - ({{ record.firstName }})</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="needs-validation" [formGroup]="fgv">
+                    <div class="form-group">
+                        <label for="InputType">Rol</label>
+                        <select class="form-control" name="role" formControlName="role">
+                                <option value="1">Usuario</option>
+                                <option value="2">Administrado</option>
+                            </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="InputType">Estado</label>
+                        <select class="form-control" name="isActive" formControlName="isActive">
+                                <option value='true'>Activo</option>
+                                <option value='false'>Inactivo</option>
+                            </select>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
+                <button type="button" class="btn btn-primary" [disabled]="fgv.invalid" (click)="onSubmit()">Cambiar</button>
+            </div>
+        </div>
+    </div>
+</div>

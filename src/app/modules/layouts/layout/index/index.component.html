@@ -1,0 +1,33 @@
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <app-sidebar></app-sidebar>
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Topbar -->
+        <app-topbar></app-topbar>
+
+        <!-- Page Content -->
+        <div class="container-fluid">
+
+            <router-outlet></router-outlet>
+
+        </div>
+
+    </div>
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Modal Logout -->
+<app-logout></app-logout>
+
+<!-- Modal Change Password -->
+<app-change-password></app-change-password>

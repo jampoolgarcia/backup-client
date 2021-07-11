@@ -1,0 +1,128 @@
+<section class="container-fluid">
+    <div class="row">
+        <div class="col-xl-9  col-lg-12 mb-4">
+            <div class="card border-bottom-primary text-center text-md-left shadow h-100 py-2">
+                <div class="row no-gutters">
+                    <div class="col-xs-12 col-md-2 d-flex justify-content-center">
+                        <img [src]="record.img | image:'doctor'" class="card-img" alt="...">
+                    </div>
+                    <div class="col-xs-12 col-md-10">
+                        <!-- <a class="edit float-right mr-4 mt-3" routerLink="/doctor/details/{{record.id}}">
+                            <i class="fas fa-portrait"></i>
+                        </a>
+                        <a class="edit float-right mr-4 mt-3" href="#" (click)="edit(record)" data-toggle="modal" data-target="#modalDoctor">
+                            <i class="fas fa-edit"></i>
+                        </a> -->
+                        <div class="card-body">
+                            <div class="col-xl-9 col-lg-12">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">{{ record.name }}</div>
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-6">
+                                        <p class="h5 mb-0 font-weight-bold text-gray-800"><small class="text-muted "><i class="fas fa-id-card-alt mr-1"></i>{{ record.ci }}</small></p>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <p class="h5 mb-0 font-weight-bold text-gray-800"><small class="text-muted "><i class="fas fa-venus-mars mr-1"></i>{{ record.sex }}</small></p>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <p class="h5 mb-0 font-weight-bold text-gray-800"><small class="text-muted "><i class="fas fa-calendar-day mr-1"></i>{{ record.dateBirth | date:'dd/MM/yyyy' }}</small></p>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <p class="h5 mb-0 font-weight-bold text-gray-800"><small class="text-muted "><i class="fas fa-phone mr-1"></i>{{ record.phone }}</small></p>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <p class="h5 mb-0 font-weight-bold text-gray-800"><small class="text-muted "><i class="fas fa-stethoscope mr-1"></i>{{ record.specialty.name }}</small></p>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <p class="h5 mb-0 font-weight-bold text-gray-800"><small class="text-muted "><i class="fas fa-map-marked mr-1"></i>{{ record.direction }}</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="col-xl-3 col-lg-12 mb-4">
+            <div class="card border-bottom-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Balance</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ record.balance | currency:'COP' }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4" hidden>
+        <div id="accordion" class="col-lg-12">
+            <div class="card shadow">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed font-weight-bold text-primary text-uppercase" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Consultas
+                  </button>
+                    </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+                        on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
+                        farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow">
+                <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed font-weight-bold text-primary text-uppercase" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Pagos
+                  </button>
+                    </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                    <div class="card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+                        on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
+                        farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="card shadow col-sm-12 text-center no-gutter">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Active</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+
+</section>
